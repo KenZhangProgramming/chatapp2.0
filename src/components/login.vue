@@ -1,6 +1,7 @@
 <template>
   <div>
-    <h1>login</h1>
+    <h1>Login</h1>
+    <h3>If you don't have an account, please <router-link to="/register">REGISTER</router-link>.</h3>
     <form-element></form-element>
   </div>
 </template>
