@@ -5,6 +5,7 @@
 const express = require("express");
 const http = require('http');
 const cors = require('cors');
+const bodyParser = require('body-parser');
 const routes = require('./utils/dbRoutes');
 const {mongoose} = require('./utils/mongoose');
 
@@ -23,8 +24,18 @@ class Server{
         new routes(this.app).routesConfig();
     }
 
+    appConfig(){
+        this.app.use(
+            bodyParser.json()
+        );
+        this.app.use(
+        	cors()
+        );
+    }
+
     appExecute(){
 
+        this.appConfig();
         this.includeRoutes();
 
         this.http.listen(this.port, this.host, () => {

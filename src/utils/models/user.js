@@ -17,6 +17,7 @@ var UserSchema = new mongoose.Schema({
     type: []
   },
   online: {
+    default: false,
     type: Boolean,
   }
 });
