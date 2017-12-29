@@ -1,8 +1,12 @@
 <template>
 <body>
+  <v-app>
     <div id="app">
-      <router-view/>
+      <v-container fluid>
+          <router-view/>
+      </v-container>
     </div>
+  </v-app>
 </body>
 </template>
 
@@ -20,6 +24,7 @@ export default {
   text-align: center;
   color: #2c3e50;
   margin-top: 60px;
+  background-color: #80d4ff;
 }
 
 body{
@@ -27,6 +32,5 @@ body{
   width:  100%;
   margin:    0;
   padding:   0;
-  background-color: #80d4ff;
 }
 </style>

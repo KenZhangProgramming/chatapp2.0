@@ -1,9 +1,22 @@
 <template>
-  <div>
-    <h1>Login</h1>
-    <h3>If you don't have an account, please <router-link to="/register">REGISTER</router-link>.</h3>
-    <form-element></form-element>
-  </div>
+    <v-layout>
+      <v-flex xs12 sm6 offset-sm3>
+        <v-card>
+          <v-card-title primary-title>
+            <div>
+              <h3 class="headline mb-0">Login</h3>
+            </div>
+          </v-card-title>
+          <form-element></form-element>
+          <v-btn
+            dark
+            class="cyan"
+            @click="login">
+            Login
+          </v-btn>
+        </v-card>
+      </v-flex>
+    </v-layout>
 </template>
 
 <script>

@@ -12,19 +12,6 @@ export default {
   name: 'register',
   components: {
     'form-element': Form
-  },
-  data(){
-        return{
-          item:{}
-        }
-    },
-    methods: {
-      registerUser(){
-        let uri = 'http://localhost:4000/users/register';
-        this.axios.post(uri, this.item).then((response) => {
-          this.$router.push({name: 'DisplayItem'})
-        })
-    }
   }
 }
 </script>
