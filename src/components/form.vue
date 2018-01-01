@@ -21,11 +21,31 @@
 </template>
 
 <script>
-export default {
-  name: 'form',
-  data () {
+  export default {
+    name: 'form',
+    data () {
+      return {
+        valid: false,
+        name: '',
+        nameRules: [
+          (v) => !!v || 'Name is required',
+          (v) => v.length <= 10 || 'Name must be less than 10 characters'
+        ],
+        password: '',
+        passwordRules: [
+          (v) => !!v || 'PassWord is required'
+        ]
+      }
+    },
+    methods: {
+      updatePasswordAndName: function () {
+        console.log('testing')
+        if (this.name !== '' && this.password !== '') {
+          this.$emit('credentials', {'name': this.name, 'password': this.password})
+        }
+      }
+    }
   }
-}
 </script>
 
 <style scoped>

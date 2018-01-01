@@ -7,7 +7,7 @@
               <h3 class="headline mb-0">Login</h3>
             </div>
           </v-card-title>
-          <form-element></form-element>
+          <form-element v-on:input="updateCredentials($event)"></form-element>
           <v-btn
             dark
             class="cyan"
@@ -26,6 +26,24 @@ export default {
   name: 'login',
   components: {
     'form-element': Form
+  },
+  data () {
+    return {
+      email: '',
+      password: ''
+    }
+  },
+  methods: {
+    updateCredentials: function (credentials) {
+      console.log(credentials)
+      /*
+        this.email = credentials['email']
+        this.password = credentials['password']
+
+        console.log(this.email)
+        console.log(this.password)
+      */
+    }
   }
 }
 </script>
