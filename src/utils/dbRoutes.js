@@ -16,7 +16,9 @@ class dbRoutes{
 	appRoutes(){
 		this.app.post('/users/register',(req,res) =>{
       var body = _.pick(req.body, ['name', 'password']);
+			console.log(body);
       var user = new User(body);
+			console.log(user);
       user.save().then(() => {
         res.status(200).send(user);
       }).catch((e) => {

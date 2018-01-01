@@ -7,7 +7,23 @@
               <h3 class="headline mb-0">Login</h3>
             </div>
           </v-card-title>
-          <form-element v-on:input="updateCredentials($event)"></form-element>
+          <v-form v-model="valid">
+            <v-flex xs6 offset-xs3>
+                <v-text-field
+                  label="User Name"
+                  v-model="name"
+                  :rules="nameRules"
+                  :counter="10"
+                  required
+                ></v-text-field>
+                <v-text-field
+                  label="PassWord"
+                  v-model="password"
+                  :rules="passwordRules"
+                  required
+                ></v-text-field>
+            </v-flex>
+          </v-form>
           <v-btn
             dark
             class="cyan"
@@ -20,31 +36,23 @@
 </template>
 
 <script>
-import Form from './form.vue'
-
 export default {
   name: 'login',
-  components: {
-    'form-element': Form
-  },
   data () {
     return {
-      email: '',
-      password: ''
+      valid: false,
+      name: '',
+      nameRules: [
+        (v) => !!v || 'Name is required',
+        (v) => v.length <= 10 || 'Name must be less than 10 characters'
+      ],
+      password: '',
+      passwordRules: [
+        (v) => !!v || 'PassWord is required'
+      ]
     }
   },
-  methods: {
-    updateCredentials: function (credentials) {
-      console.log(credentials)
-      /*
-        this.email = credentials['email']
-        this.password = credentials['password']
-
-        console.log(this.email)
-        console.log(this.password)
-      */
-    }
-  }
+  methods: {}
 }
 </script>
 
