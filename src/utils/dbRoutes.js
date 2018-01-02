@@ -16,9 +16,7 @@ class dbRoutes{
 	appRoutes(){
 		this.app.post('/users/register',(req,res) =>{
       var body = _.pick(req.body, ['name', 'password']);
-			console.log(body);
       var user = new User(body);
-			console.log(user);
       user.save().then(() => {
         res.status(200).send(user);
       }).catch((e) => {
@@ -26,6 +24,18 @@ class dbRoutes{
       });
     });
 
+		this.app.post('/users/login', (req, res) => {
+		  var body = _.pick(req.body, ['name', 'password']);
+			console.log(body);
+
+		  User.findByCredentials(body.name, body.password).then((user) => {
+		    return user.generateAuthToken().then((token) => {
+		      res.header('x-auth', token).send(user);
+		    });
+		  }).catch((e) => {
+		    res.status(400).send();
+		  });
+		});
   }
 
 	routesConfig(){

@@ -5,7 +5,8 @@
 
     <v-toolbar-items>
 
-      <v-btn flat color="white">
+      <v-btn flat color = "white"
+        @click="navigateTo({name: 'register'})">
         Sign Up
       </v-btn>
 
@@ -21,7 +22,12 @@
 
 <script>
 export default {
-  name: 'header'
+  name: 'header',
+  methods: {
+    navigateTo (route) {
+      this.$router.push(route)
+    }
+  }
 }
 </script>
 
