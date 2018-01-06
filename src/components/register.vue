@@ -25,6 +25,7 @@
                 ></v-text-field>
             </v-flex>
           </v-form>
+          <div class="danger-alert" v-html="error" />
           <v-btn
             dark
             class="cyan"
@@ -50,18 +51,16 @@ export default {
       password: '',
       passwordRules: [
         (v) => !!v || 'PassWord is required'
-      ]
+      ],
+      error: null
     }
   },
   methods: {
     register () {
       let uri = 'http://localhost:4000/users/register'
-      var user = {'name': this.name, 'password': this.password}
-      console.log(user)
       this.axios.post(uri, {'name': this.name, 'password': this.password}).then((response) => {
-        console.log(response)
-      }).catch((e) => {
-        console.log(e)
+      }).catch((error) => {
+        this.error = error.response.data.error
       })
     }
   }
@@ -69,5 +68,7 @@ export default {
 </script>
 
 <style>
-
+.danger-alert {
+  color: red;
+}
 </style>

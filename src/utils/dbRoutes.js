@@ -20,7 +20,9 @@ class dbRoutes{
       user.save().then(() => {
         res.status(200).send(user);
       }).catch((e) => {
-        res.status(400).send("unable to save to database")
+        res.status(400).send({
+					error: "User Name Taken. Please Think Another"
+				})
       });
     });
 
@@ -33,7 +35,9 @@ class dbRoutes{
 		      res.header('x-auth', token).send(user);
 		    });
 		  }).catch((e) => {
-		    res.status(400).send();
+		    res.status(404).send({
+					error: "Cannot Find the User Please Register"
+				});
 		  });
 		});
   }
