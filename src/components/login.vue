@@ -53,7 +53,18 @@ export default {
       ]
     }
   },
-  methods: {}
+  methods: {
+    login () {
+      let uri = 'http://localhost:4000/users/login'
+      var user = {'name': this.name, 'password': this.password}
+      console.log(user)
+      this.axios.post(uri, {'name': this.name, 'password': this.password}).then((response) => {
+        console.log(response)
+      }).catch((e) => {
+        console.log(e)
+      })
+    }
+  }
 }
 </script>
 

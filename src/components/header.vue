@@ -10,6 +10,11 @@
         Sign Up
       </v-btn>
 
+      <v-btn flat color = "white"
+        @click="navigateTo({name: 'login'})">
+        Log In
+      </v-btn>
+
       <v-btn flat color="white">
         Log Out
       </v-btn>

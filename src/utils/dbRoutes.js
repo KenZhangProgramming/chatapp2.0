@@ -26,8 +26,8 @@ class dbRoutes{
 
 		this.app.post('/users/login', (req, res) => {
 		  var body = _.pick(req.body, ['name', 'password']);
-			console.log(body);
 
+			// Find the user's name and password in the database
 		  User.findByCredentials(body.name, body.password).then((user) => {
 		    return user.generateAuthToken().then((token) => {
 		      res.header('x-auth', token).send(user);
